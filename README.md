@@ -60,7 +60,7 @@ K-Digital Training 과정 TEAM 1조 '돌다두'의 프로젝트입니다.
 
 ---
 
-## 💻 요구 사항 (Prerequisites)
+##  요구 사항 (Prerequisites)
 
 * **OS**: Ubuntu 22.04
 * **ROS**: ROS2 Humble
