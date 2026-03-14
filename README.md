@@ -119,3 +119,6 @@ python3 pc3_stage3_4_node.py
 python3 pc3_stage5_6_node.py
 ```
 
+### 시연 영상 
+
+https://drive.google.com/file/d/1xejZ0qdTUP_FK8T38EU0fvwJ7-eXsF3y/view?usp=sharing 
