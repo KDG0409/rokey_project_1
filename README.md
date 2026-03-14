@@ -1,13 +1,13 @@
 # Proactive-Co-AMR-Safety
 SLAM(위치추정 및 공간지도 생성) 기반 자율주행 로봇 시스템 프로젝트
 
-# 🛡️ Proactive Co-AMR Safety System
+#  Proactive Co-AMR Safety System
 > **AMR 협업형 실내 안전위협요소 선제 대응 시스템**
 
 K-Digital Training 과정 TEAM 1조 '돌다두'의 프로젝트입니다.
 이 프로젝트는 실내 공간에서 발생할 수 있는 안전 위협 요소(장애물, 균열, 액체 등)를 고정형 웹캠으로 선제적으로 감지하고, 다중 AMR(자율주행 로봇)이 협업하여 정밀 탐색 및 후속 조치를 수행하는 통합 관제 시스템입니다.
 
-## ✨ 핵심 기능 (Key Features)
+##  핵심 기능 (Key Features)
 * **사각지대 없는 선제 감지**: 2대의 웹캠이 공간을 4x4 격자(16개 섹션)로 분할하여 모니터링하며, 빠른 속도의 **YOLO11n** 모델을 이용해 위협 객체(물, 균열, 컵)를 실시간으로 식별합니다.
 * **다중 로봇 협업 (Multi-AMR Collaboration)**:
   * **AMR 1 (1차 출동 및 정밀 측정)**: 통제 로봇으로서 웹캠이 알려준 대략적인 섹션으로 이동 후, OAK-D 3D 카메라와 **YOLOv8s** 모델을 통해 객체의 정확한 맵 좌표(x, y)를 추출하고 통제 구역을 확보합니다.
@@ -16,7 +16,7 @@ K-Digital Training 과정 TEAM 1조 '돌다두'의 프로젝트입니다.
 
 ---
 
-## 🏗️ 시스템 아키텍처 (System Architecture)
+##  시스템 아키텍처 (System Architecture)
 본 시스템은 중앙 관제 서버를 중심으로 한 Star Topology 기반 분산 구조를 가집니다.
 * **PC-3 (모니터링 서버)**: 웹캠 영상 수신, 실시간 객체 탐지, 중앙 관제 및 임무 조율, 웹 UI 호스팅을 수행합니다.
 * **PC-1 (AMR-1 제어 서버)**: 1차 통제 로봇(TurtleBot4) 제어 및 로컬 객체 탐지, OAK-D Depth 연산을 담당합니다.
@@ -24,7 +24,7 @@ K-Digital Training 과정 TEAM 1조 '돌다두'의 프로젝트입니다.
 
 ---
 
-## 🖥️ 통합 관제 대시보드 (Monitoring Dashboard & UI)
+##  통합 관제 대시보드 (Monitoring Dashboard & UI)
 프로젝트의 핵심인 `Flask` 및 `SQLite` 기반 실시간 통합 관제 UI는 다음과 같은 기능을 제공합니다.
 
 * **4채널 실시간 스트리밍**: 고정형 웹캠 2대(`WEB1`, `WEB2`) 및 AMR 카메라 2대(`AMR1`, `AMR2`)의 시점을 하나의 대시보드에서 동시 확인 가능합니다. 웹캠 화면에는 16분할(4x4)된 **Section Grid**가 오버레이되어 객체의 대략적인 위치를 즉각적으로 파악할 수 있습니다.
@@ -34,7 +34,7 @@ K-Digital Training 과정 TEAM 1조 '돌다두'의 프로젝트입니다.
 
 ---
 
-## 🏗️ 시스템 워크플로우 (System Workflow)
+##  시스템 워크플로우 (System Workflow)
 
 본 시스템은 총 6단계(Stage 1 ~ 6)에 걸쳐 작동합니다.
 
@@ -45,7 +45,7 @@ K-Digital Training 과정 TEAM 1조 '돌다두'의 프로젝트입니다.
 
 ---
 
-## 📂 파일 구조 (Repository Structure)
+##  파일 구조 (Repository Structure)
 
 | 파일명 | 설명 |
 |---|---|
@@ -69,7 +69,7 @@ K-Digital Training 과정 TEAM 1조 '돌다두'의 프로젝트입니다.
   ```bash
   pip install rclpy flask opencv-python numpy ultralytics cv_bridge tf2_ros
 
-## 🚀 실행 방법 (How to Run)
+##  실행 방법 (How to Run)
 
 ### 1. 작업 공간 빌드 및 환경 설정
 터미널을 열고 워크스페이스를 빌드한 후 환경 변수를 설정합니다.
@@ -89,7 +89,7 @@ export YOLO_AMR_MODEL_PATH=/home/rokey/rokey_ws/src/pc3/models/best.pt
 export HTML_VERSION=modal
 python3 appdb_merged_kr_fix.py
 ```
-👉 서버 실행 후 브라우저에서 `http://localhost:5000` 에 접속하여 대시보드를 확인합니다.
+ 서버 실행 후 브라우저에서 `http://localhost:5000` 에 접속하여 대시보드를 확인합니다.
 
 ### 3. 로봇 협업 노드 실행 (Launch 파일 사용)
 제공된 launch 파일을 사용하면 3개의 스테이지 노드를 한 번에 실행할 수 있습니다.
